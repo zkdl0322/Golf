@@ -1,7 +1,8 @@
 import { redirect } from "next/navigation";
-import { cancelAction } from "@/app/actions";
+import { cancelAction, signOutAction } from "@/app/actions";
 import { Card, Notice, PageHeader } from "@/components/ui";
 import { getCurrentUserId, getMyBookings, getMyPasses } from "@/lib/data";
+import { isSupabaseConfigured } from "@/lib/supabase/config";
 import { formatKst } from "@/lib/time";
 
 const STATUS_LABEL = { booked: "예약됨", cancelled: "취소됨", done: "완료", no_show: "노쇼" } as const;
@@ -74,6 +75,12 @@ export default async function MyPage({ searchParams }: PageProps<"/me">) {
             ))}
           </ul>
         </>
+      )}
+
+      {isSupabaseConfigured && (
+        <form action={signOutAction} className="mt-10 text-center">
+          <button className="text-sm text-neutral-500 underline">로그아웃</button>
+        </form>
       )}
     </>
   );

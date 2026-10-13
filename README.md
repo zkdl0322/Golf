@@ -22,8 +22,9 @@ http://localhost:3000 을 열면 됩니다. Supabase 설정이 없으면 샘플 
    - `supabase/migrations/0001_init.sql` — 테이블, 예약/취소 함수, 권한
    - `supabase/migrations/0002_dev_purchase.sql` — 결제 없이 수강권 발급 (개발용)
    - `supabase/seed.sql` — 샘플 지점/프로/상품
-3. Authentication → Providers 에서 **Kakao** 활성화 ([카카오 개발자](https://developers.kakao.com) 앱 키 필요)
-4. `.env.example` 을 `.env.local` 로 복사하고 URL / anon key 입력 후 `npm run dev`
+3. Authentication → URL Configuration 의 Redirect URLs 에 `http://localhost:3000/**` 추가
+4. `.env.example` 을 `.env.local` 로 복사하고 Project URL / anon(publishable) key 입력 후 `npm run dev`
+5. `/login` 에서 이메일로 로그인 링크 받아 로그인 (카카오 로그인은 Authentication → Providers 에서 Kakao 를 따로 활성화해야 함)
 
 ## 화면 구성
 
